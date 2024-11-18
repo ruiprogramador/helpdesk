@@ -1,0 +1,219 @@
+.dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+.header.waves{
+    background-color: #ffffff00;
+    width: 100%;
+    height: 100vh;
+}
+
+.about_system ul li{
+    list-style-type: none;
+}
+
+.about_system ul li::before{
+    content: "➤ ";
+}
+
+.presentation_system ul{
+    padding: 0px;
+}
+
+.presentation_system ul li{
+    list-style-type: none;
+}
+
+.footer{
+
+    background-color: #000;
+
+    .footer_main_content {
+
+        /*.footer-menu ul li{
+            list-style-type: none !important;
+            text-decoration: none !important;
+            color: white !important;
+        }*/
+
+        .footer-social ul li{
+            text-decoration: none;
+            list-style-type: none;
+            font-weight: 700;
+        }
+
+        .footer-menu ul li{
+            list-style-type: none;
+            text-decoration: none;
+            color: white;
+        }
+
+        .footer-menu ul li a::before{
+            content: "➤ ";
+        }
+
+        .footer-menu ul li a:hover{
+            color: #007bff;
+            border-bottom: 1px solid #007bff;
+        }
+
+        .short-description-footer{
+            color: white;
+        }
+    }
+
+    .waves {
+        display: block;
+        position: relative;
+        top: -2px;
+        height: 110px;
+        background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1518 110" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path fill="rgba(0, 0, 0)" d="M 0 0 C 387.5 0 387.5 110 775 110 L 775 110 L 775 0 L 0 0 Z" stroke-width="0"></path> <path fill="rgba(0, 0, 0)" d="M 774 110 C 1151 110 1151 0 1528 0 L 1528 0 L 1528 0 L 774 0 Z" stroke-width="0"></path> </svg>');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        /*@media (max-width:1527px) {
+            .div {
+              background-size: contain;
+            }
+        }*/
+    }
+}
+
+
+.row_user_form{
+    /*background-color: black;*/
+}
+
+.login-image{
+    background-size: cover;
+    background-position: top center;
+}
+
+.user_form {
+
+    .form-control{
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+    }
+
+    input::placeholder{
+        color: white;
+    }
+
+    .form-control:focus{
+        background-color: black;
+        color: white;
+        border: 1px solid white;
+    }
+
+    .title_user_form{
+        color: white;
+        font-weight: bold;
+    }
+
+    .email_label{
+        color: white;
+        font-weight: bold;
+    }
+
+    .password_label{
+        color: white;
+        font-weight: bold;
+    }
+
+    .form-check{
+        color: white;
+    }
+
+    .btn-user-form{
+        /*background-color: #007bff;*/
+        color: white;
+        font-weight: bold;
+        border: 1px solid white;
+    }
+
+
+}
+
+.side_background_form{
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: block;
+}
+
+/*.side_background_form{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: block;
+}
+
+.side_background_form::before{
+    content: "";
+    position: absolute;
+    padding-top: 56.25%;
+    top: 0;
+    left: 0;
+}*/
+
+/*.login-image{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: block;
+}
+
+.login-image::before{
+    content: "";
+    position: absolute;
+    padding-top: 56.25%;
+    top: 0;
+    left: 0;
+}*/
+
+.card-login{
+    background-color: transparent !important;
+    /*border: 5px solid black !important;*/
+}
+
+/*.card-login .card-header{
+    background: black;
+    position: absolute;
+    width: 100%;
+    margin-top: -40px;
+    color: white;
+    border-bottom-left-radius: 2px solid red;
+    border-radius: 10px;
+}*/
+
+/*.col-parallax {
+    position: relative;
+    width: 100%;
+    background-image: url("../img/helpdesk_solutions.jpg");
+}
+
+.col-parallax-img::before {
+    content: "";
+    position: absolute;
+    padding-top: 56.25%;
+    top: 0;
+    left: 0;
+}*/
+
+/*.footer{
+    position: absolute;
+    bottom: 0;
+    width: -webkit-fill-available;
+}*/
+
+@media (max-width: 768px) {
+    .footer .footer-social{
+        text-align: center;
+    }
+}
