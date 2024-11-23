@@ -26,7 +26,3 @@ I thought of the idea of ​​tickets as a ideal project to practice Laravel an
 - **Laravel Blade**: For rendering initial server-side views with embedded Vue.js components.
 - **Email Notifications**: Automatically notify users when a ticket status changes (e.g., when it's resolved).
 - **Vue Router & Vuex**: For managing navigation and application state in a smooth, seamless single-page application (SPA) experience.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
