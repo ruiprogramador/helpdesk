@@ -1,66 +1,32 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<h1 align="center">Help Desk System</h1>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## About Help Desk System
 
-## About Laravel
+This project is a Help Desk System built with Laravel for the back-end and in the future is to use Vue.js for the front-end, designed to help users create, track, and resolve support tickets. The integration of Vue.js introduces a more dynamic, interactive user experience, making the system more responsive and efficient.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+I thought of the idea of ​​tickets as a ideal project to practice Laravel and Vue.js together.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Purpose
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- **Submit tickets**: Customers can create support tickets for various issues using a reactive interface.
+- **Track tickets**: Real-time updates allow users to see changes to ticket statuses without refreshing the page.
+- **Manage agents**: Admins can assign, view, and resolve tickets using a dynamic Vue.js interface.
+- **User authentication**: Users can sign up, log in, and manage their profiles with seamless form handling.
 
-## Learning Laravel
+## Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+- **User Authentication**: Built-in authentication with user roles (Admin, Agent, Customer).
+- **Ticket Management**: Users can create, view, update, and track tickets with a reactive Vue.js interface.
+- **Role-based Access Control**: Different views and actions depending on whether you're an admin, agent, or customer.
+- **Real-time Ticket Updates**: Vue.js integrated with Laravel Echo allows for real-time ticket status updates, so users don't need to refresh the page.
+- **Component-based Front-end**: Vue.js components for reusable, modular UI elements.
+- **API-driven Architecture**: Communication between Vue.js and Laravel is handled through API calls (RESTful API).
+- **Database Migration & Seeding**: The database is designed using Laravel migrations, and seeders populate the database with sample data.
+- **Laravel Eloquent**: Using Eloquent ORM for querying and managing data.
+- **Laravel Blade**: For rendering initial server-side views with embedded Vue.js components.
+- **Email Notifications**: Automatically notify users when a ticket status changes (e.g., when it's resolved).
+- **Vue Router & Vuex**: For managing navigation and application state in a smooth, seamless single-page application (SPA) experience.
 
 ## Contributing
 
 Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
