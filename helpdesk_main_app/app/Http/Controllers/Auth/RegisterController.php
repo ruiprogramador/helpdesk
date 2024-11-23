@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+// use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -43,13 +45,31 @@ class RegisterController extends Controller
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function callAction($method, $parameters)
+    // public function showRegistrationForm()
     {
 
         $this->params['action'] = 'register';
         $this->params['except'] = 'logout';
 
         // return $this->{$method}(...array_values($parameters));
-        return view('auth.auth_user', ['params' => $this->params]);
+        if(
+            1 == 1
+            && $method == 'showRegistrationForm'
+        )
+        {
+            return view('auth.auth_user', ['params' => $this->params]);
+        }else{
+            if(
+                1 == 1
+                && $method == 'register'
+            ){
+                $request = REQUEST::capture();
+                $parameters = $request->all();
+                $this->register($parameters);
+            }else{
+                return redirect()->route('register');
+            }
+        }
     }
 
     /**
@@ -68,16 +88,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
-    {
-        /*return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);*/
-
-        dd($data);
-    }
+    // protected function validator(array $data)
+    // {
+    //     return Validator::make($data, [
+    //         'name' => ['required', 'string', 'max:255'],
+    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+    //         'password' => ['required', 'string', 'min:8', 'confirmed'],
+    //     ]);
+    // }
 
     /**
      * Create a new user instance after a valid registration.
@@ -85,12 +103,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    // protected function create(array $data)
+    protected function register(array $data)
     {
-        return User::create([
+        dd("yes");
+        /*return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+        ]);*/
     }
 }

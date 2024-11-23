@@ -11,6 +11,7 @@
                 <form
                     class="form user_form"
                     method="POST"
+                    enctype="multipart/form-data"
                     action="{{ route(data_get($params, 'action') ) }}"
                 >
                     @csrf
@@ -108,7 +109,7 @@
                                         <div class="form-group d-flex justify-content-center">
                                             <div class="form-check rounded col-md-12 text-left">
                                                 <label class="form-check-label text-white">
-                                                    <input class="form-check-input" name="agree" type="checkbox" required >
+                                                    <input name="agree" class="form-check-input" type="checkbox" required > {{-- required --}}
                                                     <span class="form-check-sign"></span>
                                                     <b>
                                                         {{-- {{ __('Agree with terms and conditions') }} --}}
@@ -135,9 +136,7 @@
                             {{-- Submit button --}}
                             <div class="card-footer ml-auto mr-auto">
                                 <div class="container text-center" >
-                                    <button type="submit" class="btn btn-outline-dark btn-wd btn-user-form">
-                                        {{ ucfirst(data_get($params, 'action')) }}
-                                    </button>
+                                    <input type="submit" class="btn btn-outline-dark btn-wd btn-user-form" value="{{ ucfirst(data_get($params, 'action')) }}">
                                 </div>
                             </div>
 
