@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::fallback(function () {
+    // dd('404 Not Found: ' . request()->url());
+    // Log the invalid URL that was requested
+    Log::warning('404 Not Found: ' . request()->url());
+
+    // Return custom 404 page
+    return response()->view('errors.404', [], 404);
+});

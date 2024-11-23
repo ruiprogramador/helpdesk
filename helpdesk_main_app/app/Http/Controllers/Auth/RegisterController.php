@@ -67,7 +67,7 @@ class RegisterController extends Controller
                 $parameters = $request->all();
                 $this->register($parameters);
             }else{
-                return redirect()->route('register');
+                dd("Error: Invalid method");
             }
         }
     }

@@ -27,4 +27,23 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        // dd($exception);
+        if (
+            1 == 1
+            &&
+            (
+                $exception instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException
+                || $exception instanceof \Illuminate\Database\Eloquent\ModelNotFoundException
+                || $exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException
+            )
+        ) {
+            // Return custom 404 page
+            return response()->view('errors.404', [], 404);
+        }
+
+        return parent::render($request, $exception);
+    }
 }

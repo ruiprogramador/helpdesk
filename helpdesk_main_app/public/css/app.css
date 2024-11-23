@@ -207,6 +207,55 @@
     width: -webkit-fill-available;
 }*/
 
+/* .error404{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: block;
+    height: 100vh;
+}
+
+.error404::before{
+    content: "";
+    position: absolute;
+    padding-top: 56.25%;
+    top: 0;
+    left: 0;
+} */
+
+.error404{
+    .title
+    , .sub-title
+    , .main_text
+    {
+        text-align: center;
+        color: white;
+    }
+
+    .advice
+    , .advice_list{
+        color: white;
+    }
+
+    .advice_list{
+        list-style-type: none;
+
+        .advice_point{
+            font-weight: bold;
+        }
+
+        .advice_point a{
+            color: #007bff;
+            text-decoration: none;
+        }
+    }
+
+    .advice_list ::before{
+        content: "➤ ";
+    }
+}
+
 @media (max-width: 768px) {
     .footer .footer-social{
         text-align: center;
