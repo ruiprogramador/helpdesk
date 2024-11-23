@@ -1,4 +1,7 @@
 @extends('layouts/app', ['activePage' => 'login', 'title' => 'Help Desk System'])
+@php
+    dd($params);
+@endphp
 
 @section('content')
     <div class="full-page section-image container-fluid" data-color="black">

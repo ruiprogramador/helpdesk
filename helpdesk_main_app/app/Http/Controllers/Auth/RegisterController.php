@@ -30,6 +30,28 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/home';
 
+    protected $params = [
+        'except' => 'logout'
+        , 'action' => 'register'
+    ];
+
+    /**
+     * Execute an action on the controller.
+     *
+     * @param  string  $method
+     * @param  array  $parameters
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function callAction($method, $parameters)
+    {
+
+        $this->params['action'] = 'register';
+        $this->params['except'] = 'logout';
+
+        // return $this->{$method}(...array_values($parameters));
+        return view('auth.auth_user', ['params' => $this->params]);
+    }
+
     /**
      * Create a new controller instance.
      *
@@ -37,7 +59,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest', $this->params);
     }
 
     /**

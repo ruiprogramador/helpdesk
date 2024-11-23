@@ -1,5 +1,9 @@
 @extends('layouts.app', ['activePage' => 'register', 'title' => 'Help Desk System'])
 
+@php
+    dd($params);
+@endphp
+
 @section('content')
     <div class="full-page register-page section-image register-image" data-color="orange" data-image="{{ asset('light-bootstrap/img/bg5.jpg') }}">
         <div class="content">
