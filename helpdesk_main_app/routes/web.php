@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Log;
 
 // Route::get('/{any?}', function () {
 Route::get('/', function () {
+    dd("Error: Invalid method 1");
     return view('welcome');
 })->name('welcome');
 

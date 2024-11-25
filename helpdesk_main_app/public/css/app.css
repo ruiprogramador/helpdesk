@@ -120,6 +120,9 @@
 
     .form-check{
         color: white;
+        .form_check_label{
+            padding: 0px;
+        }
     }
 
     .btn-user-form{

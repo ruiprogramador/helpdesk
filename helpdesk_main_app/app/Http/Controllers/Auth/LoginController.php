@@ -28,8 +28,8 @@ class LoginController extends Controller
     protected $redirectTo = '/home';
 
     protected $params = [
-        'except' => 'logout'
-        , 'action' => 'login'
+        'except' => 'logout',
+        'action' => 'login'
     ];
 
     /**
@@ -39,24 +39,29 @@ class LoginController extends Controller
      * @param  array  $parameters
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function callAction($method, $parameters)
+    /*public function callAction($method, $parameters)
     {
 
         $this->params['action'] = 'login';
         $this->params['except'] = 'logout';
-
         // return $this->{$method}(...array_values($parameters));
         return view('auth.auth_user', ['params' => $this->params]);
-    }
+    }*/
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         $this->middleware('guest', $this->params)->except('logout');
         $this->middleware('auth')->only('logout');
+    }
+    */
+
+    public function showLoginForm()
+    {
+        return view('auth.auth_user', ['params' => $this->params]);
     }
 }

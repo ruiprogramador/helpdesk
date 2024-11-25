@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        dd("Error: Invalid method");
         return view('home');
     }
 }

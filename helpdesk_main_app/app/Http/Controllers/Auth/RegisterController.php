@@ -7,8 +7,10 @@ use App\Models\User;
 // use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -23,7 +25,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers; // RegistersUsers trait
 
     /**
      * Where to redirect users after registration.
@@ -33,8 +35,8 @@ class RegisterController extends Controller
     protected $redirectTo = '/home';
 
     protected $params = [
-        'except' => 'logout'
-        , 'action' => 'register'
+        'except' => 'logout',
+        'action' => 'register'
     ];
 
     /**
@@ -44,9 +46,10 @@ class RegisterController extends Controller
      * @param  array  $parameters
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function callAction($method, $parameters)
-    // public function showRegistrationForm()
+    /*public function callAction($method, $parameters)
     {
+
+        // dd($method);
 
         $this->params['action'] = 'register';
         $this->params['except'] = 'logout';
@@ -63,6 +66,10 @@ class RegisterController extends Controller
                 1 == 1
                 && $method == 'register'
             ){
+                //return view('auth.auth_user', ['params' => $this->params]);
+
+                //dd($parameters);
+
                 $request = REQUEST::capture();
                 $parameters = $request->all();
                 $this->register($parameters);
@@ -70,6 +77,11 @@ class RegisterController extends Controller
                 dd("Error: Invalid method");
             }
         }
+    }*/
+
+    public function showRegistrationForm()
+    {
+        return view('auth.auth_user', ['params' => $this->params]);
     }
 
     /**
@@ -104,13 +116,45 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
     // protected function create(array $data)
-    protected function register(array $data)
+    public function register(Request $request)
     {
-        dd("yes");
-        /*return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);*/
+        $registerRequest = new RegisterRequest();
+
+        if (
+            1 == 1
+            && $registerRequest->authorize()
+        ) {
+
+            //dd($request->all());
+
+            $validation = $registerRequest->validate($request->all());
+
+            if (
+                1 == 1
+                && $validation->fails()
+            ) {
+
+                return redirect()->back()
+                    ->withErrors($validation)
+                    ->withInput();
+            }
+
+            // dd($request->all());
+
+            $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()->route('login')->with([
+                'success' => 'You have successfully registered'
+            ]);
+        } else {
+            return redirect()->route('register')->with([
+                'error' => 'You are not authorized to register'
+            ]);
+        }
     }
 }

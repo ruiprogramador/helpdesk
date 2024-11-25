@@ -1,6 +1,5 @@
 @extends('layouts/app', ['activePage' => 'login', 'title' => 'Help Desk System'])
 
-
 @section('content')
     <div class="full-page section-image container-fluid" data-color="black">
         <div class="row row_user_form">
@@ -78,7 +77,7 @@
                                     <label class="label_stylish" for="password" class="col-md-6 col-form-label">{{ __('Password') }}</label>
 
                                     <div class="col-md-14">
-                                        <input name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required autocomplete="current-password" placeholder="Enter password">
+                                        <input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" name="password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" value="{{ old('password') }}" required autocomplete="current-password" placeholder="Enter password">
 
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -106,16 +105,21 @@
                                         </div>
 
                                         {{-- Agree with terms and conditions --}}
-                                        <div class="form-group d-flex justify-content-center">
+                                        <div class="form-group">
                                             <div class="form-check rounded col-md-12 text-left">
-                                                <label class="form-check-label text-white">
-                                                    <input name="agree" class="form-check-input" type="checkbox" required > {{-- required --}}
-                                                    <span class="form-check-sign"></span>
+
+                                                <label class="form-check form-check-inline form_check_label" for="agree">
                                                     <b>
-                                                        {{-- {{ __('Agree with terms and conditions') }} --}}
                                                         <a data-bs-toggle="modal" data-bs-target="#terms_conditions" style="color:#23CCEF">Agree with terms and conditions</a>
                                                     </b>
                                                 </label>
+                                                <input name="agree" id="agree" class="form-check-input @error('agree') is-invalid @enderror" type="checkbox" value="1">
+
+                                                @error('agree')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
                                             </div>
                                         </div>
                                     @endif
