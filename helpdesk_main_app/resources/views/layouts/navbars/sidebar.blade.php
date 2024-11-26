@@ -1,10 +1,4 @@
-<div class="sidebar" data-image="{{ asset('light-bootstrap/img/sidebar-5.jpg') }}">
-
-    <!--
-Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
-
-Tip 2: you can also add an image using data-image tag
--->
+{{-- <div class="sidebar" style="background: url({{ asset('img/sidebar-5.jpg') }})">
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="http://www.creative-tim.com" class="simple-text">
@@ -85,4 +79,138 @@ Tip 2: you can also add an image using data-image tag
             </li>
         </ul>
     </div>
-</div>
+</div> --}}
+
+@if(1 == 1 && auth()->check() && request()->route()->getName() != "")
+    <aside
+        class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl fixed-start"
+        id="sidenav-main"
+        style="
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 25%;
+            background-color: #f1f1f1;
+            height: 100%; /* Full height */
+            position: fixed; /* Make it stick, even on scroll */
+            overflow: auto; /* Enable scrolling if the sidenav has too much content */
+        "
+    >
+        <div
+            class="sidenav-header"
+            style="margin: 0 auto;"
+        >
+            <a
+                class="navbar-brand m-0"
+                href="{{ route('welcome') }}"
+                target="_blank"
+                style="
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                "
+            >
+                <img src="{{ asset('img/helpdesk_big_logo.png') }}" class="navbar-brand-img" alt="main_logo" style="width: 25%;">
+                <span class="ms-1 font-weight-bold">Help Desk System</span>
+            </a>
+        </div>
+        <hr class="horizontal dark mt-0">
+        <div class="collapse navbar-collapse w-auto ps ps--active-y" id="sidenavCollapseMain">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/dashboard">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3 d-flex align-items-center">
+                    <div class="ps-4">
+                        <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                    </div>
+                    <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Laravel Examples</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/profile">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/user-management">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">User Management</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="https://argon-dashboard-laravel.creative-tim.com/tables">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Tables</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/billing">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Billing</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/virtual-reality">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-app text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Virtual Reality</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/rtl">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">RTL</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-3">
+                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/profile-static">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Profile</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/sign-in-static">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Sign In</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/sign-up-static">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="ni ni-collection text-info text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Sign Up</span>
+                    </a>
+                </li>
+            </ul>
+        <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 314px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 148px;"></div></div></div>
+    <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></aside>
+@endif

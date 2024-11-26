@@ -1,3 +1,5 @@
+@php dd("typography"); @endphp
+
 @extends('layouts.app', ['activePage' => 'typography', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION', 'navName' => 'Typography', 'activeButton' => 'laravel'])
 
 @section('content')

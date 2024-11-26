@@ -35,9 +35,20 @@
         @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
     </head>
 
+    {{-- route name --}}
+    @php
+        // $routeName = request()->route()->getName();
+        // // dd("Route Name: " . $routeName);
+        // $controller = request()->route()->getAction('controller');
+
+        // dd("Controller: " . $controller);
+    @endphp
+
     <body style="background-color: black !important;">
         <div class="wrapper @if (!auth()->check() || request()->route()->getName() == "") wrapper-full-page @endif">
-
+            {{-- @php
+                dd(auth()->check() && request()->route()->getName());
+            @endphp --}}
             @if (auth()->check() && request()->route()->getName() != "")
                 @include('layouts.navbars.sidebar')
                 @include('pages/sidebarstyle')

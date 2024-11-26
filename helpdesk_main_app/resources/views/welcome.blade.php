@@ -1,3 +1,5 @@
+@php dd("welcome"); @endphp
+
 @extends('layouts/app', ['activePage' => 'welcome'])
 
 @section('content')

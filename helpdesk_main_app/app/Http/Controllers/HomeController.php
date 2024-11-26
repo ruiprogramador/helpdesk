@@ -23,7 +23,27 @@ class HomeController extends Controller
      */
     public function index()
     {
-        dd("Error: Invalid method");
-        return view('home');
+
+        $activePage = '';
+        $activeButton = '';
+        $navName = '';
+
+        if (
+            1 == 1
+            && auth()->check()
+        ) {
+
+            $activePage = 'home';
+            $activeButton = 'home';
+            $navName = 'home';
+            return view('home')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+        } else {
+
+            $activePage = 'welcome';
+            $activeButton = 'welcome';
+            $navName  = 'welcome';
+
+            return redirect()->route('welcome')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+        }
     }
 }

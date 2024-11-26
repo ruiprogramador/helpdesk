@@ -1,3 +1,5 @@
+@php dd("icons"); @endphp
+
 @extends('layouts.app', ['activePage' => 'icons', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION', 'navName' => 'Icons', 'activeButton' => 'laravel'])
 
 @section('content')

@@ -62,6 +62,19 @@ class LoginController extends Controller
 
     public function showLoginForm()
     {
-        return view('auth.auth_user', ['params' => $this->params]);
+        // dd('showLoginForm');
+
+        $activePage = 'login';
+        $activeButton = 'login';
+        $navName = 'login';
+
+        if (
+            1 == 1
+            && !auth()->check()
+        ) {
+            return view('auth.auth_user', ['params' => $this->params])->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+        } else {
+            return redirect()->route('home')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+        }
     }
 }

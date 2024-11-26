@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -19,5 +19,15 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+
+    <div
+        class="container container_user_auth"
+        style="
+           margin-left:25%;
+        "
+    >
+        <h1>asas</h1>
+    </div>
+
 @endsection
