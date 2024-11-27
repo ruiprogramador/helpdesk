@@ -34,7 +34,6 @@
         <!-- Scripts -->
         @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
     </head>
-
     {{-- route name --}}
     @php
         // $routeName = request()->route()->getName();

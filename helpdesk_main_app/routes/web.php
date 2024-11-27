@@ -44,9 +44,20 @@ Route::get('/dashboard', function () {
 
 // User Profile Route
 // Route::get('/profile/edit', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
-Route::get('/profile/edit', function () {
-    return view('profile.edit');
-})->middleware(['auth'])->name('profile.edit');
+// Route::get('/profile/edit', function () {
+//     return view('profile.edit');
+// })->middleware(['auth'])->name('profile.edit');
+
+// Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.edit');
+    Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/{id}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.delete');
+    Route::post('/profile/{id}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile/{id}/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
+});
+
 
 // User Management Route
 // Route::get('/users', [UserController::class, 'index'])->name('user.index');

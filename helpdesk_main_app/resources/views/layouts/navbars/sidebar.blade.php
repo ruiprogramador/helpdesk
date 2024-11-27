@@ -119,7 +119,7 @@
         <div class="collapse navbar-collapse w-auto ps ps--active-y" id="sidenavCollapseMain">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/dashboard">
+                    <a class="nav-link " href="{{ route('dashboard') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
                         </div>
@@ -133,7 +133,7 @@
                     <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Laravel Examples</h6>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/profile">
+                    <a class="nav-link " href="{{ route('profile.edit') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                         </div>
@@ -141,7 +141,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/user-management">
+                    <a class="nav-link " href="{{ route('user.index') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
                         </div>
@@ -152,7 +152,7 @@
                     <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="https://argon-dashboard-laravel.creative-tim.com/tables">
+                    <a class="nav-link active" href="{{ route('page.index', 'table') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
                         </div>
@@ -160,7 +160,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/billing">
+                    <a class="nav-link " href="{{ route('page.index', 'typography') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
                         </div>
@@ -181,33 +181,6 @@
                             <i class="ni ni-world-2 text-danger text-sm opacity-10"></i>
                         </div>
                         <span class="nav-link-text ms-1">RTL</span>
-                    </a>
-                </li>
-                <li class="nav-item mt-3">
-                    <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/profile-static">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Profile</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/sign-in-static">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Sign In</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="https://argon-dashboard-laravel.creative-tim.com/sign-up-static">
-                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="ni ni-collection text-info text-sm opacity-10"></i>
-                        </div>
-                        <span class="nav-link-text ms-1">Sign Up</span>
                     </a>
                 </li>
             </ul>

@@ -259,6 +259,15 @@
     }
 }
 
+.container_user_auth{
+    width: 75% !important;
+    margin-left: 25% !important;
+}
+
+/*.container_user_auth .section-card{
+    height: 100vh;
+}*/
+
 @media (max-width: 768px) {
     .footer .footer-social{
         text-align: center;

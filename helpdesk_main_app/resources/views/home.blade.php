@@ -23,11 +23,8 @@
 
     <div
         class="container container_user_auth"
-        style="
-           margin-left:25%;
-        "
     >
-        <h1>asas</h1>
+        <h1>asabbbs</h1>
     </div>
 
 @endsection
