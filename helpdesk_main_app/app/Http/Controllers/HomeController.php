@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -43,7 +43,9 @@ class HomeController extends Controller
             $activeButton = 'welcome';
             $navName  = 'welcome';
 
-            return redirect()->route('welcome')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+            return view('welcome')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
+
+            // return redirect()->route('welcome')->with('activePage', $activePage)->with('activeButton', $activeButton)->with('navName', $navName);
         }
     }
 }
