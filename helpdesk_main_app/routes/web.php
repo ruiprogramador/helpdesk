@@ -54,8 +54,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.edit');
     Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/{id}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.delete');
-    Route::post('/profile/{id}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
-    Route::post('/profile/{id}/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
+    Route::patch('/profile/{id}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
+    Route::patch('/profile/{id}/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
 });
 
 

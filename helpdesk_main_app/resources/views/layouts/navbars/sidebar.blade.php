@@ -113,6 +113,31 @@
             >
                 <img src="{{ asset('img/helpdesk_big_logo.png') }}" class="navbar-brand-img" alt="main_logo" style="width: 25%;">
                 <span class="ms-1 font-weight-bold">Help Desk System</span>
+
+                {{--
+                    Logout button
+                --}}
+
+                <form
+                    id="logout-form"
+                    action="{{ route('logout') }}"
+                    method="POST"
+                    class=""
+                >
+                    @csrf
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger"
+                        style="
+                            margin-top: 10px;
+                            width: 100%;
+                        "
+                    >
+                        Logout
+                    </button>
+
+                </form>
             </a>
         </div>
         <hr class="horizontal dark mt-0">

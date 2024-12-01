@@ -1,6 +1,8 @@
 @extends('layouts.app', ['activePage' => 'user', 'title' => 'Help Desk System - User Profile', 'navName' => 'User Profile', 'activeButton' => 'user'])
 
-
+@php
+    // dd(session()->all());
+@endphp
 
 @section('content')
     <div class="content">
@@ -18,34 +20,34 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('profile.update', auth()->user()) }}" autocomplete="off" enctype="multipart/form-data">
+                            <form method="POST" action="{{ route('profile.update', auth()->user()->id) }}" autocomplete="off" enctype="multipart/form-data">
                                 @csrf
-                                @method('patch')
+                                @method('PATCH')
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('User information') }}</h6>
 
                                 <div class="pl-lg-4">
                                     {{-- First Name --}}
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-name">
+                                        <label class="form-control-label" for="first_name">
                                             <i class="w3-xxlarge fa fa-user"></i>{{ __('First Name') }}
                                         </label>
-                                        <input type="text" name="name" id="input-first-name" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" placeholder="{{ __('First Name') }}" value="{{ old('first_name', auth()->user()->first_name) }}" required autofocus>
+                                        <input type="text" name="first_name" id="first_name" class="form-control{{ $errors->has('first_name') ? ' is-invalid' : '' }}" placeholder="{{ __('First Name') }}" value="{{ old('first_name', auth()->user()->first_name) }}" autofocus>
                                     </div>
                                     {{-- Last Name --}}
                                     <div class="form-group{{ $errors->has('last_name') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-name">
+                                        <label class="form-control-label" for="last_name">
                                             <i class="w3-xxlarge fa fa-user"></i>{{ __('Last Name') }}
                                         </label>
-                                        <input type="text" name="last_name" id="input-last-name" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Last Name') }}" value="{{ old('last_name', auth()->user()->last_name) }}" required autofocus>
+                                        <input type="text" name="last_name" id="last_name" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" placeholder="{{ __('Last Name') }}" value="{{ old('last_name', auth()->user()->last_name) }}" autofocus>
                                     </div>
 
                                     {{-- Profile picture --}}
 
                                     {{-- Email --}}
                                     <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-email"><i class="w3-xxlarge fa fa-envelope-o"></i>{{ __('Email') }}</label>
-                                        <input type="email" name="email" id="input-email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}" required>
+                                        <label class="form-control-label" for="email"><i class="w3-xxlarge fa fa-envelope-o"></i>{{ __('Email') }}</label>
+                                        <input type="email" name="email" id="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}" value="{{ old('email', auth()->user()->email) }}">
                                     </div>
                                     {{-- Save button --}}
                                     <div class="text-center">
@@ -54,33 +56,26 @@
                                 </div>
                             </form>
                             <hr class="my-4" />
-                            <form method="post" action="{{ route('profile.password', auth()->user()) }}" autocomplete="off">
+                            <form method="POST" action="{{ route('profile.password', auth()->user()) }}" enctype="multipart/form-data" autocomplete="off">
                                 @csrf
-                                @method('patch')
+                                @method('PATCH')
 
                                 <h6 class="heading-small text-muted mb-4">{{ __('Password') }}</h6>
 
                                 <div class="pl-lg-4">
-                                    {{-- Current password --}}
-                                    <div class="form-group{{ $errors->has('old_password') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-current-password">
-                                            <i class="w3-xxlarge fa fa-eye-slash"></i>{{ __('Current Password') }}
-                                        </label>
-                                        <input type="password" name="old_password" id="input-current-password" class="form-control{{ $errors->has('old_password') ? ' is-invalid' : '' }}" placeholder="{{ __('Current Password') }}" value="" required>
-                                    </div>
                                     {{-- New password --}}
                                     <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
-                                        <label class="form-control-label" for="input-password">
-                                            <i class="w3-xxlarge fa fa-eye-slash"></i>{{ __('New Password') }}
+                                        <label class="form-control-label" for="password" onclick="togglePassword(this)">
+                                            <i class="w3-xxlarge fa fa-eye-slash" id="toggle-password"></i>{{ __('New Password') }}
                                         </label>
-                                        <input type="password" name="password" id="input-password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="" required>
+                                        <input type="password" name="password" id="input-password" class="toggle-password form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('New Password') }}" value="{{ old('password') }}">
                                     </div>
                                     {{-- Confirm new password --}}
                                     <div class="form-group">
-                                        <label class="form-control-label" for="input-password-confirmation">
-                                            <i class="w3-xxlarge fa fa-eye-slash"></i>{{ __('Confirm New Password') }}
+                                        <label class="form-control-label" for="password_confirmation" onclick="togglePassword(this)">
+                                            <i class="w3-xxlarge fa fa-eye-slash" id="toggle-password_confirmation"></i>{{ __('Confirm New Password') }}
                                         </label>
-                                        <input type="password" name="password_confirmation" id="input-password-confirmation" class="form-control" placeholder="{{ __('Confirm New Password') }}" value="" required>
+                                        <input type="password" name="password_confirmation" id="input-password_confirmation" class="form-control" placeholder="{{ __('Confirm New Password') }}" value="">
                                     </div>
                                     {{-- Change password button --}}
                                     <div class="text-center">
@@ -130,4 +125,37 @@
             </div>
         </div>
     </div>
+
+    <script>
+
+        /*var togglePassword = document.getElementsByClassName('toggle-password');
+
+        for (var i = 0; i < togglePassword.length; i++) {
+            togglePassword[i].addEventListener('click', function () {
+                // var input = document.querySelector(this.getAttribute('toggle'));
+                var input = this.htmlFor;
+
+                if (input.getAttribute('type') === 'password') {
+                    input.setAttribute('type', 'text');
+                } else {
+                    input.setAttribute('type', 'password');
+                }
+            });
+        }*/
+
+        /**
+         * Toggle eye-icon for password field
+         */
+        /*$(".toggle-password").click(function () {
+            alert('clicked');
+            // $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });*/
+    </script>
+
 @endsection

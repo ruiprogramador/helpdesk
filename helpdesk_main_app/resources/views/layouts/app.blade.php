@@ -33,17 +33,15 @@
 
         <!-- Scripts -->
         @vite(['resources/assets/sass/app.scss', 'resources/assets/js/app.js'])
+
     </head>
     {{-- route name --}}
     @php
-        // $routeName = request()->route()->getName();
-        // // dd("Route Name: " . $routeName);
-        // $controller = request()->route()->getAction('controller');
-
-        // dd("Controller: " . $controller);
+        // dd(request()->route()->getName());
     @endphp
 
     <body style="background-color: black !important;">
+
         <div class="wrapper @if (!auth()->check() || request()->route()->getName() == "") wrapper-full-page @endif">
             {{-- @php
                 dd(auth()->check() && request()->route()->getName());
@@ -61,7 +59,7 @@
 
         </div>
 
-
+        @include('sweetalert::alert')
 
     </body>
     <!--   Core JS Files   -->
@@ -89,6 +87,7 @@
     <script src="{{ asset('js/demo.js') }}"></script>
     @stack('js')
      <script>
+
        $(document).ready(function () {
 
          $('#facebook').sharrre({
@@ -141,5 +140,24 @@
            url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
          });
        });
+
+        function togglePassword(element) {
+
+            var htmlFor = element.htmlFor;
+
+            var passwordField = document.getElementById("input-" + htmlFor);
+            var eyeIcon = document.getElementById('toggle-' + htmlFor);
+
+            if (passwordField.type === "password") {
+                passwordField.type = "text";  // Change to text to show password
+                eyeIcon.classList.remove("fa-eye-slash");  // Remove the eye-slash icon
+                eyeIcon.classList.add("fa-eye");  // Add the eye icon
+            } else {
+                passwordField.type = "password";  // Change back to password to hide text
+                eyeIcon.classList.remove("fa-eye");  // Remove the eye icon
+                eyeIcon.classList.add("fa-eye-slash");  // Add the eye-slash icon
+            }
+        }
+
     </script>
  </html>
