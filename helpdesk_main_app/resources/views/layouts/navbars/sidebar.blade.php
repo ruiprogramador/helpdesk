@@ -144,6 +144,11 @@
         <div class="collapse navbar-collapse w-auto ps ps--active-y" id="sidenavCollapseMain">
             <ul class="navbar-nav">
                 <li class="nav-item">
+                    <a class="nav-link " href="{{ route('tickets.index') }}">
+                        <span class="nav-link-text ms-1"><i class="fa-solid fa-ticket"></i>Tickets</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link " href="{{ route('dashboard') }}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -162,7 +167,7 @@
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
                         </div>
-                        <span class="nav-link-text ms-1">Profile</span>
+                        <span class="nav-link-text ms-1"><i class="fa-regular fa-id-card"></i>Profile</span>
                     </a>
                 </li>
                 <li class="nav-item">

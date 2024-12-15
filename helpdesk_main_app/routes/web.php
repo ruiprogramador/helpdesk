@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\TicketsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +57,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{id}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.delete');
     Route::patch('/profile/{id}/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profile/{id}/password', [App\Http\Controllers\ProfileController::class, 'password'])->name('profile.password');
+
+    Route::resource('tickets', App\Http\Controllers\TicketsController::class);
 });
 
 

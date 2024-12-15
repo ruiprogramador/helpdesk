@@ -26,6 +26,9 @@
         {{-- Font Awesome --}}
         <link href="{{ asset('css/fontawesome.min.css') }}" rel="stylesheet" />
 
+        {{-- DataTables --}}
+        <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
+
         {{-- <link href="{{ asset('light-bootstrap/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" /> --}}
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
@@ -69,8 +72,12 @@
         <script src="{{ asset('js/core/bootstrap.min.js') }}" type="text/javascript"></script>
     --}}
 
+    <script src="{{ asset('js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+
     {{-- Font Awesome --}}
     <script src="{{ asset('js/core/fontawesome.min.js') }}" type="text/javascript"></script>
+    {{-- DataTables --}}
+    <script src="{{ asset('js/core/datatables.min.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/plugins/jquery.sharrre.js') }}"></script>
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
@@ -85,6 +92,10 @@
     <script src="{{ asset('js/light-bootstrap-dashboard.js?v=2.0.0') }}" type="text/javascript"></script>
     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('js/demo.js') }}"></script>
+
+
+    <!-- Place for stacked scripts (like DataTable init for specific pages) -->
+    @stack('scripts')
     @stack('js')
      <script>
 

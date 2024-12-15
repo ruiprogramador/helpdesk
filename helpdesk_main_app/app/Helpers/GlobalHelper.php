@@ -21,4 +21,9 @@ class GlobalHelper
     {
         session()->forget('alert');
     }
+
+    public static function capitalize($string)
+    {
+        return ucwords($string);
+    }
 }

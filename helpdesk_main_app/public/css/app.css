@@ -264,6 +264,17 @@
     margin-left: 25% !important;
 }
 
+#tickets-table_wrapper{
+    background-color: white;
+}
+
+.actions_list_tables{
+    a{
+        color: #007bff;
+        text-decoration: none;
+    }
+}
+
 /*.container_user_auth .section-card{
     height: 100vh;
 }*/
