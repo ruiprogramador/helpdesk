@@ -38,8 +38,14 @@
                                         <i class="fa fa-plus"></i>
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                        <a class="dropdown-item" href="{{ route('tickets.create', ['type' => 'service']) }}">Request a service</a>
-                                        <a class="dropdown-item" href="{{ route('tickets.create', ['type' => 'problem']) }}">Report a problem</a>
+                                        {{-- <a class="dropdown-item" href="{{ route('tickets.create', ['type' => 'service']) }}">Request a service</a>
+                                        <a class="dropdown-item" href="{{ route('tickets.create', ['type' => 'problem']) }}">Report a problem</a> --}}
+
+                                        @if(1 == 1 && isset($ticket_types) && is_array($ticket_types) && count($ticket_types) > 0)
+                                            @foreach ($ticket_types as $ticket_type)
+                                                <a class="dropdown-item" href="{{ route('tickets.create', ['type' => $ticket_type->type_id]) }}">{{ $ticket_type->type }}</a>
+                                            @endforeach
+                                        @endif
                                     </div>
                                 </div>
                             </th>
@@ -48,7 +54,7 @@
                     <tbody>
                         @foreach ($tickets as $ticket)
                             <tr>
-                                <td>{{ $ticket->id }}</td>
+                                <td>{{ $ticket->ticket_id }}</td>
                                 <td>{{ $ticket->title }}</td>
                                 <td>{{ $helper->capitalize($ticket->status) }}</td>
                                 <td>{{ $helper->capitalize($ticket->priority) }}</td>
@@ -57,11 +63,11 @@
                                 <td>{{ $ticket->comments_count }}</td>
                                 <td class="actions_list_tables">
                                     {{-- View Ticket --}}
-                                    <a href="{{ route('tickets.show', $ticket->id) }}">
+                                    <a href="{{ route('tickets.show', $ticket->ticket_id) }}">
                                         <i class="fa fa-eye"></i>
                                     </a>
                                     {{-- Edit Ticket --}}
-                                    <a href="{{ route('tickets.edit', $ticket->id) }}">
+                                    <a href="{{ route('tickets.edit', $ticket->ticket_id) }}">
                                         <i class="fa fa-edit"></i>
                                     </a>
                                     {{-- <form action="{{ route('tickets.destroy', $ticket->id) }}" method="POST" style="display: inline-block;">

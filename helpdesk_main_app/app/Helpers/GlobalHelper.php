@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Helpers;
+use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Hash;
 
 class GlobalHelper
 {
@@ -25,5 +27,23 @@ class GlobalHelper
     public static function capitalize($string)
     {
         return ucwords($string);
+    }
+
+    public static function convertToRouteName($string)
+    {
+        return strtolower(str_replace(' ', '.', $string));
+    }
+
+    public static function convertToParameterRouteName($string)
+    {
+        return strtolower(str_replace(' ', '_', $string));
+    }
+
+    public static function displayErrorsMessage($errors){
+        alert()->error('Error')
+            ->html('<i class="fas fa-2x fa-exclamation-triangle" style="color: #d33;"></i> ' . $errors)
+            ->showConfirmButton('OK', '#3085d6');
+
+        return redirect()->back();
     }
 }
