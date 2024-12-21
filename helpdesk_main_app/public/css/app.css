@@ -190,6 +190,20 @@
     border-radius: 10px;
 }*/
 
+.card-reset-password{
+    background-color: transparent !important;
+    border-radius: 10px !important;
+    border-color: white !important;
+}
+
+.card-reset-password .card-body{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+
+
 /*.col-parallax {
     position: relative;
     width: 100%;
@@ -273,6 +287,22 @@
         color: #007bff;
         text-decoration: none;
     }
+}
+
+.reset_password{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    display: block;
+}
+
+.reset_password::before{
+    content: "";
+    position: absolute;
+    padding-top: 56.25%;
+    top: 0;
+    left: 0;
 }
 
 /*.container_user_auth .section-card{

@@ -1,10 +1,11 @@
 <?php
 
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\TicketsController;
-
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -77,6 +78,28 @@ Route::get('/page/{type}', function ($type) {
 
 // UPGRADE TO PRO ROUTE
 // Route::get('/upgrade', [UpgradeController::class, 'index'])->name('upgrade.index');
-Route::get('/upgrade', function () {
-    return view('upgrade'); // The view or page that handles the upgrade
-})->name('page.index');
+// Route::get('/upgrade', function () {
+//     return view('upgrade'); // The view or page that handles the upgrade
+// })->name('page.index');
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm']);
+
+Route::get('/send-email', function () {
+    $details = [
+        'title' => 'Mail from HelpDesk MainxD App',
+        'body' => 'This is for testing email using SMTP'
+    ];
+    try
+    {
+        Mail::send([], [], function ($message) use ($details) {
+            $message->to('gr13zm4nnd0c4r4lh0@gmail.com')
+                ->subject($details['title'])
+                ->html($details['body']);
+        });
+        return "Email sent";
+    }
+    catch (\Exception $e)
+    {
+        return $e->getMessage();
+    }
+})->name('send-email');
