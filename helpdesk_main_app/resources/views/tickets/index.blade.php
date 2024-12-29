@@ -87,6 +87,7 @@
 @push('scripts')
     <script>
         let table = new DataTable('#tickets-table', {
+            dom: 'Blfrtip',
             searchable: true,
             sortable: true,
             perPage: 25,
@@ -100,7 +101,41 @@
                 'emptyTable': 'Nenhum dado disponível na tabela',
                 'zeroRecords': 'Nenhum dado encontrado',
                 'infoFiltered': '(filtrado de _MAX_ total entradas)',
-            },
+            },buttons: [
+                // 'copy', 'csv', 'excel', 'print'
+                {
+                    extend: 'copy',
+                    text: 'Copiar',
+                    className: 'btn btn-primary',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+                {
+                    extend: 'csv',
+                    text: 'CSV',
+                    className: 'btn btn-secondary',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+                {
+                    extend: 'excel',
+                    text: 'Excel',
+                    className: 'btn btn-outline-primary',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                },
+                {
+                    extend: 'print',
+                    text: 'Imprimir',
+                    className: 'btn btn-outline-secondary',
+                    exportOptions: {
+                        columns: [0, 1, 2, 3, 4, 5, 6]
+                    }
+                }
+            ]
         });
     </script>
 @endpush

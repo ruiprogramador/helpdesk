@@ -28,6 +28,7 @@
 
         {{-- DataTables --}}
         <link href="{{ asset('css/datatables.min.css') }}" rel="stylesheet" />
+        <link href="{{ asset('css/buttons.dataTable.min.css') }}" rel="stylesheet" />
 
         {{-- <link href="{{ asset('light-bootstrap/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" /> --}}
         <!-- CSS Just for demo purpose, don't include it in your project -->
@@ -78,6 +79,14 @@
     <script src="{{ asset('js/core/fontawesome.min.js') }}" type="text/javascript"></script>
     {{-- DataTables --}}
     <script src="{{ asset('js/core/datatables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/buttons.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/dataTables.buttons.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/buttons.dataTables.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/jszip.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/pdfmake.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/vfs_fonts.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/buttons.html5.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/core/buttons.print.min.js') }}" type="text/javascript"></script>
 
     <script src="{{ asset('js/plugins/jquery.sharrre.js') }}"></script>
     <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
