@@ -15,6 +15,9 @@ use App\Models\CategoriesTickets;
 use App\Models\PrioritiesTickets;
 use App\Models\Users;
 use Illuminate\Support\Facades\Auth;
+use App\Mail\SendEmailTicketNotification;
+use Illuminate\Support\Facades\Mail;
+
 class TicketsController extends Controller
 {
 
@@ -293,8 +296,6 @@ class TicketsController extends Controller
                 1 == 1
                 && TicketTypes::where('id', $request_type->type)->exists()
             ){
-                // dd("Valid Ticket Type");
-
                 $ticketAction = $this->ticketAction = 'create';
                 $ticket_type = $request_type->type;
                 $priorities_list = $this->prioritiesTickets;
@@ -393,6 +394,8 @@ class TicketsController extends Controller
             $feedback != ' ' ? $feedback : '<li>Invalid Ticket</li>';
         }
 
+        $id = 0;
+
         if(
             1 == 1
             && $valid
@@ -407,9 +410,29 @@ class TicketsController extends Controller
             $ticket->status_id = $request->status_id;
             $ticket->category_id = $request->category_id;
             $ticket->user_id = Auth::user()->id;
-            $ticket->save();
 
-            return redirect()->route('tickets.show', $ticket->id);
+            $saveTicket = $ticket->save();
+
+            if(
+                1 == 1
+                && $saveTicket
+            ){
+                $valid = true;
+                $id = $ticket->id;
+                $ticketInfo =  $this->getTickets($id);
+                $ticketInfo[0]->url = route('tickets.show', $id);
+                $ticketInfo[0]->introduction = '<p>A ticket has been updated!</p>';
+                Mail::to(Auth::user()->email)->send(new SendEmailTicketNotification($ticketInfo));
+            }else{
+                $feedback = '<li>Failed to save ticket</li>';
+            }
+        }
+
+        if(
+            1 == 1
+            && $valid
+        ){
+            return redirect()->route('tickets.show', $id);
         }
         else{
             return $this->globalHelper->displayErrorsMessage($feedback);
@@ -612,16 +635,30 @@ class TicketsController extends Controller
             $ticket->status_id = $request->status_id;
             $ticket->category_id = $request->category_id;
             $ticket->user_id = Auth::user()->id;
-            $ticket->save();
 
-            return redirect()->route('tickets.show', $request->ticket_id);
+            $saveTicket = $ticket->save();
+
+            if(
+                1 == 1
+                && $saveTicket
+            ){
+                $valid = true;
+                $id = $ticket->id;
+
+                $ticketInfo =  $this->getTickets($id);
+                $ticketInfo[0]->url = route('tickets.show', $id);
+                $ticketInfo[0]->introduction = '<p>A ticket has been updated!</p>';
+                Mail::to(Auth::user()->email)->send(new SendEmailTicketNotification($ticketInfo));
+            }else{
+                $feedback = '<li>Failed to save ticket</li>';
+            }
         }
 
         if(
             1 == 1
             && $valid
         ){
-            return redirect()->route('tickets.show', ['id' => $request->ticket_id]);
+            return redirect()->route('tickets.show', $request->ticket_id);
         }else{
             return $this->globalHelper->displayErrorsMessage($feedback);
         }

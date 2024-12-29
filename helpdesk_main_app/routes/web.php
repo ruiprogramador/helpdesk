@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\TicketsController;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\SendEmailMessageTsT;
+use App\Helpers\GlobalHelper;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,7 +25,12 @@ use Illuminate\Support\Facades\Mail;
 //     return view('welcome');
 // })->name('welcome');
 
-Auth::routes();
+// Auth::routes();
+
+/**
+ * Change to verify
+ */
+Auth::routes(['verify' => true]);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
@@ -52,7 +59,7 @@ Route::get('/dashboard', function () {
 
 // Route::post('/profile/update', [App\Http\Controllers\ProfileController::class, 'update'])->name('profile.update');
 
-Route::group(['middleware' => ['auth']], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.edit');
     Route::get('/profile/{id}', [App\Http\Controllers\ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/{id}/delete', [App\Http\Controllers\ProfileController::class, 'destroy'])->name('profile.delete');
@@ -67,7 +74,7 @@ Route::group(['middleware' => ['auth']], function () {
 // Route::get('/users', [UserController::class, 'index'])->name('user.index');
 Route::get('/users', function () {
     return view('user.index');
-})->middleware(['auth'])->name('user.index');
+})->middleware(['auth', 'verified'])->name('user.index');
 
 // Table List Route
 // Route::get('/page/{type}', [PageController::class, 'index'])->name('page.index');
@@ -82,24 +89,40 @@ Route::get('/page/{type}', function ($type) {
 //     return view('upgrade'); // The view or page that handles the upgrade
 // })->name('page.index');
 
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm']);
+// Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm']);
+
+Route::get('password/reset', [ResetPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('password/email', [ResetPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::get('/send-email', function () {
-    $details = [
-        'title' => 'Mail from HelpDesk MainxD App',
-        'body' => 'This is for testing email using SMTP'
-    ];
-    try
-    {
-        Mail::send([], [], function ($message) use ($details) {
-            $message->to('gr13zm4nnd0c4r4lh0@gmail.com')
-                ->subject($details['title'])
-                ->html($details['body']);
-        });
-        return "Email sent";
-    }
-    catch (\Exception $e)
-    {
-        return $e->getMessage();
-    }
+    // $details = [
+    //     'title' => 'Mail from HelpDesk MainxD App',
+    //     'body' => 'This is for testing email using SMTP'
+    // ];
+    // try
+    // {
+    //     Mail::send([], [], function ($message) use ($details) {
+    //         $message->to('gr13zm4nnd0c4r4lh0@gmail.com')
+    //             ->subject($details['title'])
+    //             ->html($details['body']);
+    //     });
+    //     return "Email sent";
+    // }
+    // catch (\Exception $e)
+    // {
+    //     return $e->getMessage();
+    // }
+
+    return new SendEmailMessageTsT(); // return only view
+
+    // $globalHelper = new GlobalHelper();
+
+    // $globalHelper->clearSession();
+
+    // Mail::to('gr13zm4nnd0c4r4lh0@gmail.com')->send(new SendEmailMessageTsT());
+
+    // $globalHelper->displaySuccessMessage('Email sent successfully!');
+
 })->name('send-email');

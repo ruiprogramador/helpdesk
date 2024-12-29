@@ -46,4 +46,12 @@ class GlobalHelper
 
         return redirect()->back();
     }
+
+    public static function displaySuccessMessage($message){
+        alert()->success('Success')
+            ->html('<i class="fas fa-2x fa-check-circle" style="color: #28a745;"></i> ' . $message)
+            ->showConfirmButton('OK', '#3085d6');
+
+        return redirect()->back();
+    }
 }

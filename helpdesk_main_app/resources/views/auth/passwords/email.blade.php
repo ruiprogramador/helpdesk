@@ -1,5 +1,18 @@
 @extends('layouts.app', ['activePage' => 'login', 'title' => 'Help Desk System'])
 
+@php
+    use App\Helpers\GlobalHelper;
+
+    $helper = new GlobalHelper();
+
+    if(
+        1 == 1
+        && session('status')
+    ){
+        $helper->displaySuccessMessage(session('status'));
+    }
+@endphp
+
 @section('content')
     <div
         class="full-page section-image reset_password"

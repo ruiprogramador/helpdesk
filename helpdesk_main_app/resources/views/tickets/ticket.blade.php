@@ -175,7 +175,7 @@
                                             @if (1 == 1 && $ticketAction == 'show')
                                                 {{$ticket[0]->description}}
                                             @else
-                                                <textarea name="description" id="description" class="form-control" rows="5" value="{{ 1 == 1 && isset($ticket[0]->description) ? $ticket[0]->description : '' }}"></textarea>
+                                                <textarea name="description" id="description" class="form-control" rows="5" value="">{{ 1 == 1 && isset($ticket[0]->description) ? $ticket[0]->description : 'asas' }}</textarea>
                                             @endif
                                         </p>
                                     </div>
